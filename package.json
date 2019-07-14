@@ -1,6 +1,6 @@
 {
 	"name": "copy-correct",
-	"displayName": "Copy Correct Content",
+	"displayName": "Copy Correct",
 	"description": "Copy the code with the correct content",
 	"version": "0.0.1",
 	"engines": {
@@ -12,7 +12,13 @@
 	"activationEvents": [
 		"onCommand:extension.copy-correct-indent"
 	],
+	"author": {
+		"name": "foerlax",
+		"email": "helloworldmkv@gmail.com"
+	},
 	"main": "./out/extension.js",
+	"icon": "https://forelax.space/assets/icons/copy-correct-logo.png",
+	"publisher": "forelax",
 	"contributes": {
 		"commands": [
 			{
