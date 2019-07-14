@@ -1,23 +1,30 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as clipboard from 'clipboardy';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	let disposable = vscode.commands.registerCommand('extension.copy-correct-indent', () => {
+		const editor = vscode.window.activeTextEditor;
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "copy-correct-indent" is now active!');
+		if (!editor) {
+			console.log('There is no active editor.');
+			return;
+		}
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
+		if (editor.selection.isEmpty) {
+			console.log('There is no code has been selected.');
+			return;
+		}
+		const tabSize = editor.selection.start.character;
+		const text = editor.document.getText(editor.selection);
+		const corretIndentText = text.split("\n").map((line) => {
+			return line.replace(new RegExp(`^\\s{${tabSize}}`), '');
+		}).join("\n");
+		clipboard.writeSync(corretIndentText);
+		vscode.window.showInformationMessage('Code has been correctly copied.');
 	});
 
 	context.subscriptions.push(disposable);
