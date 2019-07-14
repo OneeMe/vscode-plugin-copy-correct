@@ -1,6 +1,6 @@
-# copy-correct-indent README
+# copy-correct README
 
-This is the README for your extension "copy-correct-indent". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "copy-correct". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

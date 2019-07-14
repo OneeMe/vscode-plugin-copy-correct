@@ -1,7 +1,7 @@
 {
-	"name": "copy-correct-indent",
-	"displayName": "Copy Correct Indent",
-	"description": "Copy the code with the correct indent",
+	"name": "copy-correct",
+	"displayName": "Copy Correct Content",
+	"description": "Copy the code with the correct content",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.36.0"
